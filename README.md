@@ -22,7 +22,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First, you will need to generate your API keys from [this page](https://sso.godaddy.com/login?realm=idp&app=developer&path=%2Fkeys%2F).
+
+```ruby
+require 'godaddy/api'
+
+api = Godaddy::Api.new apikey, apisecret
+
+result = api.patch('/v1/domains/mydomain.com/records',
+               [{ type: 'A', name: 'test', data: '1.2.3.4', ttl: 60 }]
+              )
+
+puts result
+=>
+{}
+```
 
 ## Development
 
