@@ -29,13 +29,34 @@ require 'godaddy/api'
 
 api = Godaddy::Api.new apikey, apisecret
 
+result = api.get('/v1/domains')
+
+puts result
+=>
+[
+  {
+    "domainId": 11111111,
+    "domain": "mydomain.com",
+    "status": "ACTIVE",
+    "expires": "2016-09-14T21:59:59Z",
+    "expirationProtected": false,
+    "holdRegistrar": false,
+    "limited": false,
+    "locked": true,
+    "privacy": false,
+    "renewAuto": true,
+    "smart": false,
+    "transferProtected": false
+  }
+]
+
 result = api.patch('/v1/domains/mydomain.com/records',
                     [{ type: 'A', name: 'test', data: '1.2.3.4', ttl: 60 }]
                   )
 
 puts result
 =>
-{}
+[{}]
 ```
 
 ## Development
