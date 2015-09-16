@@ -30,8 +30,8 @@ require 'godaddy/api'
 api = Godaddy::Api.new apikey, apisecret
 
 result = api.patch('/v1/domains/mydomain.com/records',
-               [{ type: 'A', name: 'test', data: '1.2.3.4', ttl: 60 }]
-              )
+                    [{ type: 'A', name: 'test', data: '1.2.3.4', ttl: 60 }]
+                  )
 
 puts result
 =>
