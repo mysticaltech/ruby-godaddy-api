@@ -56,7 +56,7 @@ result = api.patch('/v1/domains/mydomain.com/records',
 
 puts result
 =>
-[{}]
+{}
 ```
 
 ## Development
