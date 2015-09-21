@@ -19,8 +19,7 @@ module Godaddy
         uri = URI(API_URL + uri)
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
-        request = Net::HTTP.const_get(method.capitalize).new uri, @headers
-        request.body = payload.to_json if payload
+        request = build_request method, uri, payload
         response = http.request(request)
         result = JSON.parse(response.body)
 
@@ -28,6 +27,17 @@ module Godaddy
 
         result
       end
+    end
+
+    private
+
+    def build_request(method, uri, payload = nil)
+      if payload
+        method == :get ? uri.query = URI.encode_www_form(payload) : body = payload.to_json
+      end
+      request = Net::HTTP.const_get(method.capitalize).new uri, @headers
+      request.body = body if body
+      request
     end
   end
 end
