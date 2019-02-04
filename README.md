@@ -33,6 +33,9 @@ require 'godaddy/api'
 
 api = Godaddy::Api.new apikey, apisecret
 
+# To use the OTE endpoint, specify them as the 3rd argument
+# api = Godaddy::Api.new apikey, apisecret, "https://api.ote-godaddy.com/"
+
 result = api.get('/v1/domains')
 
 puts result
@@ -81,4 +84,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/blueic
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
