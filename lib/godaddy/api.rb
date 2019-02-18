@@ -21,7 +21,11 @@ module Godaddy
         http.use_ssl = true
         request = build_request method, uri, payload
         response = http.request(request)
-        result = JSON.parse(response.body)
+        begin
+          result = JSON.parse(response.body)
+        rescue
+          result = response.body
+        end
 
         fail APIError, result unless response.is_a?(Net::HTTPSuccess)
 
