@@ -6,7 +6,7 @@ module Godaddy
 
   class Api
     def initialize(apikey, apisecret, api_url = "https://api.godaddy.com")
-      @api_url = api_endpoint
+      @api_url = api_url
       @headers = {
         'Authorization' => "sso-key #{apikey}:#{apisecret}",
         'Content-type' => 'application/json'
